@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine Proposal for Shreyu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Floating hearts background */
+    .heart {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      animation: popIn 1.2s ease;
+      z-index: 10;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      color: #e6005c;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #444;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .name {
+      font-size: 28px;
+      color: #ff3366;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ff3366, #ff758c);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(255, 51, 102, 0.6);
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #e6005c;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <script>
+    const heartCount = 25;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      heart.style.fontSize = 16 + Math.random() * 24 + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="card">
+    <h1>Happy Valentine’s Day 💖</h1>
+    <div class="name">Shreyu</div>
+    <p>
+      From the moment you came into my life, every day feels special.
+      You are my love, my best friend, and my forever.
+    </p>
+    <button onclick="showButtons()">Click for a Surprise</button>
+
+    <div class="message" id="message">
+      Will you be my Valentine, today and always? 💕
+    </div>
+
+    <div id="buttons" style="display:none; margin-top:20px;">
+      <button onclick="yesClicked()">Yes 💖</button>
+      <button onclick="noClicked()" style="margin-left:10px; background: linear-gradient(135deg,#999,#666);">No 🙈</button>
+    </div>
+
+    <div class="message" id="reaction"></div>
+  </div>
+
+  <script>
+    function showButtons() {
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('buttons').style.display = 'block';
+    }
+
+    function yesClicked() {
+      const reaction = document.getElementById('reaction');
+      reaction.style.display = 'block';
+      reaction.innerHTML = " 💖💍 My heart is yours forever, Shreyu... I'm so lucky to hve you in my life... Thank You so mach you coming in my life , I love you diku 💖😍";
+
+      // Heart explosion effect
+      for (let i = 0; i < 40; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.style.position = 'fixed';
+        heart.style.left = '50%';
+        heart.style.top = '50%';
+        heart.style.fontSize = 16 + Math.random() * 24 + 'px';
+        heart.style.transform = `translate(-50%, -50%)`;
+        heart.style.transition = 'all 1.5s ease-out';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.top = Math.random() * 100 + 'vh';
+          heart.style.opacity = '0';
+        }, 50);
+
+        setTimeout(() => heart.remove(), 1600);
+      }
+    }
+
+    function noClicked() {
+      const btn = event.target;
+      btn.style.position = 'absolute';
+      btn.style.left = Math.random() * 70 + 'vw';
+      btn.style.top = Math.random() * 70 + 'vh';
+    }
+  </script>
+
+</body>
+</html>
